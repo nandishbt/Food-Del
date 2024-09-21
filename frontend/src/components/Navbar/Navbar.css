@@ -61,3 +61,17 @@
   top: -8px;
   right: -8px;
 }
+
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+  }
+  .navbar-right {
+    gap: 15px;
+  }
+
+  .navbar-right button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}

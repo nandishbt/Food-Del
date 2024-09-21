@@ -11,7 +11,7 @@ const Exploremenu = ({ category, setCategory }) => {
   };
 
   return (
-    <div className="explore-menu" id="explore-menu">
+    <div className="explore-menu" id="menu">
       <h2>Explore our menu</h2>
       <p className="explore-menu-text">
         Explore our menu and discover a variety of flavors, from savory starters
