@@ -1,0 +1,39 @@
+.cart{
+    margin-top: 100px;
+ 
+}
+
+.cart-items-title{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr;
+    align-items: center;
+    padding: 10px;
+}
+
+.cart .heading{
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.items{
+    padding: 10px;
+    font-weight: 600;
+}
+
+.items img{
+    width: 100px;
+    border-radius: 5px;
+}
+
+.cart hr{
+    border: none;
+    height: 1px;
+    background-color: #e2e2e2;
+}
+
+.items .x{
+    cursor: pointer;
+    font-size: 18px;
+    
+}
+
