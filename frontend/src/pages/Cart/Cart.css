@@ -1,39 +1,141 @@
-.cart{
-    margin-top: 100px;
- 
+.cart {
+  margin-top: 100px;
 }
 
-.cart-items-title{
-    display: grid;
-    grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr;
-    align-items: center;
-    padding: 10px;
+.cart-items-title {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr;
+  align-items: center;
+  padding: 10px;
 }
 
-.cart .heading{
-    font-weight: 300;
-    font-size: 18px;
+.cart .heading {
+  font-weight: 300;
+  font-size: 18px;
 }
 
-.items{
-    padding: 10px;
-    font-weight: 600;
+.items {
+  padding: 10px;
+  font-weight: 600;
 }
 
-.items img{
-    width: 100px;
-    border-radius: 5px;
+.items img {
+  width: 100px;
+  border-radius: 5px;
 }
 
-.cart hr{
-    border: none;
-    height: 1px;
-    background-color: #e2e2e2;
+.cart hr {
+  border: none;
+  height: 1px;
+  background-color: #e2e2e2;
 }
 
-.items .x{
-    cursor: pointer;
-    font-size: 18px;
-    
+.items .x {
+  cursor: pointer;
+  font-size: 18px;
 }
 
+.cart-bottom {
+  margin-top: 100px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: max(8vw, 20px);
+}
+
+.cart-total {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart-total-bill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-total hr {
+  margin: 10px 0;
+}
+
+.cart-total button {
+  width: max(12vw, 40px);
+  padding: 10px 5px;
+  background-color: tomato;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.promocode {
+  flex: 1;
+  background-color: #e2e2e2;
+}
+
+.promocode .promo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.promocode .promo input {
+  padding: 12px 5px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.promocode .promo button {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+  .cart {
+    margin-top: 50px;
+  }
+
+  .cart-items-title {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 0.5fr;
+  }
+
+  .cart .heading {
+    font-size: 12px;
+  }
+
+  .items {
+    font-size: 11px;
+  }
+
+  .items img {
+    width: 60px;
+  }
+
+  .items .x {
+    font-size: 12px;
+  }
+
+  .cart-bottom {
+    flex-direction: column-reverse;
+
+  }
+
+  .cart-total {
+    width: 100%;
+  }
+
+  .promocode {
+   width: 100%;
+  }
+
+  .cart-total button {
+    width: 100%;
+  }
+}
