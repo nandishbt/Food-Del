@@ -1,0 +1,45 @@
+.order {
+  margin-top: 100px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.order-left {
+  width: 100%;
+  max-width: max(40%, 500px);
+}
+
+.order-left p {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+
+.order-left input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  outline-color: tomato;
+
+  border-radius: 4px;
+
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.order-left-multi {
+  display: flex;
+  gap: 15px;
+}
+
+
+.order-right{
+    width: 100%;
+    max-width: 40%;
+}
+
+.order-right button{
+    margin-top: 50px;
+}
