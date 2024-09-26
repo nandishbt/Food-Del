@@ -1,0 +1,47 @@
+.add{
+    width: 90%;
+    margin-top: 50px;
+    margin-left: 50px;
+    font-size: max(1vw,16px);
+    color: #565555;
+}
+
+.add-name, .add-desc{
+    width: 40%;
+}
+
+.add-image img{
+    width: max(150px);
+}
+
+.add input,textarea,select{
+    padding: 10px;
+    border: 1px solid #868282;
+    outline-color: tomato;
+    border-radius: 4px;
+}
+
+ .add .add-cat-price{
+    display: flex;
+    gap: 10px;
+}
+
+.add .add-btn{
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: black;
+    width: max(5vw,150px);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+@media (max-width: 768px) {
+    .add .add-cat-price{
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+    }
+}
+ 
