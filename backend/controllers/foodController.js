@@ -1,7 +1,6 @@
 import { foodModel } from "../models/foodModel.js";
 import fs from "fs";
 
-//add the food
 
 const addFood = async (req, res) => {
   const { name, description, price, category } = req.body;
@@ -38,4 +37,37 @@ const addFood = async (req, res) => {
     .json({ msg: "food item created successfully", data: foodItem });
 };
 
-export { addFood };
+const listFood = async (req,res)=>{
+  const foodList = await foodModel.find({})
+
+  if(!foodList){
+    return res.status(400).json({msg: "Failed to fetch food list"})
+  }
+
+  return res.status(200).json({msg: "Food list fetched successfully", data: foodList})
+}
+
+const removeFood = async (req,res)=>{
+
+  const foodItem = await foodModel.findById(req.body.id)
+
+  if(!foodItem){
+    return res.status(400).json({msg: "Food item not found"})
+  }
+
+  if(foodItem.image){
+    fs.unlinkSync(`./uploads/${foodItem.image}`)
+  }
+
+
+  await foodModel.findByIdAndDelete(foodItem._id)
+
+  return res.status(200).json({msg: "Food item removed successfully"})
+
+}
+
+
+
+
+
+export { addFood ,listFood, removeFood};
