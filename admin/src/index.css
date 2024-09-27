@@ -21,6 +21,7 @@ hr{
   height: 1px;
   border: none;
   background-color: #a9a9a9;
+  margin: 5px 0;
 }
 
 .app-content{
@@ -31,5 +32,9 @@ hr{
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.cursor{
+  cursor: pointer;
 }
 

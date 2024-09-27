@@ -4,8 +4,8 @@ import { assets } from "../../assets/assets";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const Add = () => {
-  const url = "http://localhost:8000/api";
+const Add = ({url}) => {
+ 
 
   const [image, setImage] = useState(false);
 
@@ -34,7 +34,7 @@ const Add = () => {
     formData.append("image", image);
 
     try {
-      const res = await axios.post(`${url}/food/add`, formData);
+      const res = await axios.post(`${url}/api/food/add`, formData);
       console.log(res);
       setData({
         name: "",
