@@ -19,6 +19,8 @@ const Add = ({url}) => {
   const onchangeHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
+    console.log(image);
+    
 
     setData((prev) => ({ ...prev, [name]: value }));
   };
@@ -68,6 +70,7 @@ const Add = ({url}) => {
             id="image"
             hidden
             required
+           
           />
         </div>
 

@@ -4,23 +4,46 @@ import { assets } from "../../assets/assets";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-const Update = ({ foodlist, setUpdate, url }) => {
-  const [image, setImage] = useState(false);
-  const [data, setData] = useState({});
+const Update = ({ foodItem, setUpdate, url }) => {
+  const [image, setImage] = useState(null);
+  const [data, setData] = useState({
+    name: "",
+    description: "",
+    price: "",
+    category: "Salad",
+  });
 
   const setDataItems = () => {
-    foodlist &&
+    foodItem &&
       setData(() => ({
-        name: foodlist[0].name,
-        description: foodlist[0].description,
-        price: foodlist[0].price,
-        category: foodlist[0].category,
+        name: foodItem.name,
+        description: foodItem.description,
+        price: foodItem.price,
+        category: foodItem.category,
       }));
   };
 
+  const downloadImage = async (imageUrl) => {
+    try {
+      // Fetch the image using Axios with responseType 'blob'
+      const response = await axios.get(imageUrl, { responseType: "blob" });
+
+      // Create a file from the blob
+      const blob = response.data;
+      const fileName = imageUrl.split("/").pop(); // Extract filename from the URL
+      const file = new File([blob], fileName, { type: blob.type });
+
+      // Store the file in the state (or use it as needed)
+      setImage(file);
+    } catch (error) {
+      console.error("Error downloading image:", error);
+    }
+  };
 
   useEffect(() => {
-    setDataItems(); 
+    setDataItems();
+
+    downloadImage(`${url}/images/` + foodItem.image);
   }, []);
 
   const onchangeHandler = (e) => {
@@ -42,14 +65,14 @@ const Update = ({ foodlist, setUpdate, url }) => {
 
     try {
       const res = await axios.put(
-        `${url}/api/food/edit/${foodlist[0]._id}`,
+        `${url}/api/food/edit/${foodItem._id}`,
         formData
       );
       console.log(res);
       // setDataItems()
-      setImage(false);
+      // setImage(false);
 
-      setUpdate(false)
+      setUpdate(false);
 
       toast.success(res.data.msg);
     } catch (error) {
@@ -57,6 +80,8 @@ const Update = ({ foodlist, setUpdate, url }) => {
       toast.error("error uploading food item");
     }
   };
+  
+  
 
   return (
     <div className="update">
@@ -69,14 +94,14 @@ const Update = ({ foodlist, setUpdate, url }) => {
             <div className="add-image flex-col">
               <p>Uplaod Image</p>
               <label htmlFor="image">
-                <img src={`${url}/images/` + foodlist[0].image} alt="" />
+                <img src={`${url}/images/` + foodItem.image} alt="" />
               </label>
               <input
                 onChange={(e) => setImage(e.target.files[0])}
                 type="file"
                 id="image"
-                hidden
-                required
+               
+               
               />
             </div>
 

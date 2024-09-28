@@ -8,6 +8,8 @@ const List = ({ url }) => {
   const [list, setList] = useState([]);
   const [update,setUpdate] = useState(false)
 
+  const[item,setitem] = useState({});
+
   const fetchFoodList = async () => {
     try {
       const res = await axios.get(`${url}/api/food/list`);
@@ -39,7 +41,7 @@ const List = ({ url }) => {
 
   return (
     <div className="list">
-      {list && update && <Update foodlist = {list} setUpdate = {setUpdate} url={url}/>}
+      {list && update && <Update foodItem = {item} setUpdate = {setUpdate} url={url}/>}
       <h2>All food Items</h2>
       <div className="list-heading heading">
         <b>Image</b>
@@ -54,14 +56,14 @@ const List = ({ url }) => {
         {list && 
             list.map((item,index)=>{
               return(
-               <div>
-                 <div className="item list-heading" key={index}>
+               <div  key={index}>
+                 <div className="item list-heading">
                   <img src={`${url}/images/`+item.image} alt="" />
                   <p>{item.name}</p>
                   <p>{item.category}</p>
-                  <p>{item.price}</p>
+                  <p>${item.price}</p>
                   <div className="edit-delete ">
-                    <p onClick={()=>setUpdate(true)} className="cursor">🖊</p>
+                    <p onClick={()=>(setUpdate(true) , setitem(item))} className="cursor">🖊</p>
                     <p onClick={()=>deleteFoodItem(item._id)} className="cursor">X</p>
                   </div>
                  
