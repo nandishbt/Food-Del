@@ -6,6 +6,8 @@ import Cart from './pages/Cart/Cart'
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 import Footer from './components/Footer/Footer'
 import LoginPopUp from './components/LoginPopUp/LoginPopUp'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const [Login , setLogin] = useState(false)
@@ -14,6 +16,7 @@ const App = () => {
     {Login?<LoginPopUp  setLogin = {setLogin}/>:<></>}
     <div className='app'>
       <Navbar  setLogin = {setLogin}/>
+      <ToastContainer />
 
       <Routes>
         <Route exact path='/' element={<Home />} />

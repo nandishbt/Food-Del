@@ -3,6 +3,7 @@ import cors from 'cors';
 import { mongoDb } from './config/db.js';
 import dotenv from 'dotenv'
 import foodRouter from './routes/foodRoute.js';
+import userRouter from './routes/userRoute.js';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ mongoDb()
 //api endpoints
 app.use('/api/food',foodRouter)
 app.use('/images', express.static('uploads'))
+app.use('/api/user',userRouter)
 
 
 
