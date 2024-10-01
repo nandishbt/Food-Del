@@ -8,6 +8,8 @@ import Footer from './components/Footer/Footer'
 import LoginPopUp from './components/LoginPopUp/LoginPopUp'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Verify from './pages/Verify/Verify'
+import Myorder from './pages/MyOrders/Myorder'
 
 const App = () => {
   const [Login , setLogin] = useState(false)
@@ -22,6 +24,8 @@ const App = () => {
         <Route exact path='/' element={<Home />} />
         <Route exact path='/cart' element={<Cart />} />
         <Route exact path='/placeorder' element={<PlaceOrder />} />
+        <Route exact path='/verify' element={<Verify />} />
+        <Route exact path='/myorders' element={<Myorder />} />
         
       </Routes>
 

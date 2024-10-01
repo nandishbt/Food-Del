@@ -28,17 +28,26 @@ const PlaceOrder = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
+    if(Object.keys(cartItems).length === 0){
+      alert('No items in cart')
+      return;
+    }
+
+    if(token === ''){
+      alert('Login to place order')
+      return;
+    }
+
     const items = [];
 
     for (const itemId in cartItems) {
       if (cartItems[itemId] > 0) {
         let foodItem = await food_list.find((item) => item._id == itemId);
 
-        foodItem.quantity = cartItems[itemId]
+        foodItem.quantity = cartItems[itemId];
 
         items.push({
-          ...foodItem
-          
+          ...foodItem,
         });
       }
     }
@@ -51,10 +60,11 @@ const PlaceOrder = () => {
 
     try {
       const res = await axios.post(`${url}/api/order/place`, orderdata, {
-        headers: { token ,
-          Authorization: 'Bearer pk_test_51Q4duvFLkbXavIevsF2rU26kiJx4KEhvm0OiVGq2nYK9Bny1OIyuF5WCwi9V9kxNrE8TamG8PjKFsC6XUNNQYNdM00I37HZAVf' 
+        headers: {
+          token,
+          // Authorization:
+          //   "Bearer pk_test_51Q4duvFLkbXavIevsF2rU26kiJx4KEhvm0OiVGq2nYK9Bny1OIyuF5WCwi9V9kxNrE8TamG8PjKFsC6XUNNQYNdM00I37HZAVf",
         },
-
       });
       console.log(res);
 
@@ -79,6 +89,7 @@ const PlaceOrder = () => {
   };
 
   return (
+   
     <form onSubmit={submitHandler} className="order">
       <div className="order-left">
         <p>Enter your Delivery Information</p>
@@ -91,7 +102,6 @@ const PlaceOrder = () => {
             type="text"
             placeholder="first name"
             required
-
           />
           <input
             onChange={onchangeHandler}
@@ -191,6 +201,7 @@ const PlaceOrder = () => {
         </div>
       </div>
     </form>
+    
   );
 };
 

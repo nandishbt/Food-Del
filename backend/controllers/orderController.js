@@ -2,9 +2,11 @@ import { userModel } from "../models/userModel.js";
 import { orderModel } from "../models/orderModel.js";
 import Stripe from "stripe";
 
-const stripe =  new Stripe(process.env.STRIPE_KEY)
+
 
 const placeOrder = async (req, res) => {
+
+  const stripe =  new Stripe(process.env.STRIPE_KEY)
 
  
 
@@ -82,4 +84,50 @@ const placeOrder = async (req, res) => {
   }
 };
 
-export { placeOrder };
+const verifyOrder = async (req,res)=>{
+  try {
+    const {orderId,success} = req.body
+
+    if(success === 'true'){
+      const order = await orderModel.findByIdAndUpdate(orderId,
+        {$set:{
+          payment:true
+        }},
+        {new:true}
+      )
+
+      return res.json({ success: true, message: "Payment successful" });
+    }
+
+    else{
+      const order = await orderModel.findByIdAndDelete(orderId)
+
+      return res.json({ success: false, message: "Payment failed"})
+
+    }
+
+    
+    
+  } catch (error) {
+    return res.json({ success: false, message: error.message });
+    
+  }
+}
+
+const userOrder = async (req,res)=>{
+  try {
+
+    const {userId} = req.body
+
+    const orders = await orderModel.find({userId:userId})
+
+    return res.json({ success: true, message: "Order fetched successfully", orders:orders });
+
+    
+  } catch (error) {
+    return res.json({ success: false, message: error.message });
+    
+  }
+}
+
+export { placeOrder,verifyOrder,userOrder };
