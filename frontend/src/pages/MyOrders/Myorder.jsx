@@ -51,7 +51,7 @@ const Myorder = () => {
 
                 <p className="food-status"><span>&#x2022;</span> {item.status}</p>
 
-                <button>track order</button>
+                <button onClick={()=>getUserOrders()}>track order</button>
             </div>
         ))}
 

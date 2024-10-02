@@ -1,0 +1,29 @@
+.admin-orders{
+    width: 100%;
+    padding: 50px;
+}
+
+.admin-orders h2{
+    margin-bottom: 50px;
+}
+
+.admin-container{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+}
+
+.eachorder{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr 1fr .5fr 1fr;
+    border: 2px solid #e2e2e2;
+    align-items: center;
+    padding: 10px 14px;
+}
+
+.customer-name{
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 15px;
+}

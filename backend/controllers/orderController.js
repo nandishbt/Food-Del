@@ -10,7 +10,7 @@ const placeOrder = async (req, res) => {
 
  
 
-  const frontendURL = 'http://localhost:5173'
+  const frontendURL = 'http://localhost:5174'
   try {
 
     
@@ -130,4 +130,42 @@ const userOrder = async (req,res)=>{
   }
 }
 
-export { placeOrder,verifyOrder,userOrder };
+const allOrder = async (req,res) =>{
+  try {
+
+    const orders = await orderModel.find({})
+    return res.json({ success: true, message: "All orders fetched successfully", data:orders });
+    
+  } catch (error) {
+    return res.json({ success: false, message: error.message });
+    
+  }
+}
+
+const updateStatus = async (req,res)=>{
+  try {
+
+    const{orderId,status} = req.body
+
+    const order = await orderModel.findByIdAndUpdate(orderId,
+      {$set:{
+        status:status
+      }},
+      {new:true}
+    )
+
+    const updatedOrder = await orderModel.findById(order._id)
+
+    if(!updatedOrder){
+      return res.json({ success: false, message: "Failed to update order status" });
+    }
+
+    return res.json({ success: true, message: "Order status updated successfully", data:updatedOrder });
+    
+  } catch (error) {
+    return res.json({ success: false, message: error.message });
+    
+  }
+}
+
+export { placeOrder,verifyOrder,userOrder,allOrder ,updateStatus};
