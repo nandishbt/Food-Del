@@ -11,7 +11,7 @@ const StoreContextprovider = (props) => {
 
   const [food_list,setFood_list] = useState([])
 
-  const url = 'https://food-del-4rjl.onrender.com/'
+  const url = 'https://food-del-4rjl.onrender.com'
 
   const addToCart = async (item) => {
     if (!cartItems[item]) {
