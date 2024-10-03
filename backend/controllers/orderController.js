@@ -10,7 +10,7 @@ const placeOrder = async (req, res) => {
 
  
 
-  const frontendURL = 'http://localhost:5174'
+  const frontendURL = 'https://food-del-frontend-meeq.onrender.com'
   try {
 
     
